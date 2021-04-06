@@ -51,4 +51,4 @@ saveas(f,sprintf('./monte_carlo.fig'));
 
 % vol for btc, eth, xrp
 aggregate_df = [Ystd(:,1),Ystd(:,2),Ystd(:,3)];
-% csvwrite('monte_carlo.csv',aggregate_df);
+csvwrite('monte_carlo.csv',aggregate_df);
