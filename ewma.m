@@ -21,8 +21,10 @@ function[EWMA95] = ewma(Returns, DateReturns, CryptoType)
         k     = t - TestWindowStart + 1;
         Sigma2(t) = (1-Lambda) * Returns(t-1)^2 + Lambda * Sigma2(t-1);
         Sigma = sqrt(Sigma2(t));
+%         EWMA95(k) = abs(Returns(t) -Zscore(1)*Sigma);           
         EWMA95(k) = -Zscore(1)*Sigma;
     end
+    
 
     f = figure('visible', 'on');
     plot(DateReturns(TestWindow),[EWMA95])
