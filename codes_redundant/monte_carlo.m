@@ -12,8 +12,8 @@ EstMdl = estimate(Mdl,Y);
 
 
 
-% numobs = 1176; 
-numobs = 100; 
+numobs = 1174; 
+% numobs = 100; 
 testStart = find(year(DateReturns)==2018,1); % Where we start our forecast using Monte Carlo
 SampleSize = length(Returns_btc);
 TestWindow           = testStart : SampleSize;
@@ -24,7 +24,7 @@ rng(1); %For reproducibility
 % numobs 
 % Y(testStart-30:testStart,:) : Use last 2017.12.1 to 2018.1.1 as presample 
 % 1000: run 1000 simulations for each time point
-Ysim = simulate(EstMdl,numobs,'Y0',Y(testStart-364:testStart,:),'NumPaths',1000);
+Ysim = simulate(EstMdl,numobs,'Y0',Y(testStart-363:testStart,:),'NumPaths',1000);
 
 Ymean = mean(Ysim,3); % Calculate means
 Ystd = std(Ysim,0,3); % Calculate std deviations
