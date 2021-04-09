@@ -90,7 +90,7 @@ var_xrp = np.abs(-norm.ppf(0.05)*xrp_sigma[363:])
 
 pVar = 0.05
 
-df_gamma_95 = pd.DataFrame({'btc': return_dataset_2018.btc, 'var_95_btc': var_btc,
+df_garch_95 = pd.DataFrame({'btc': return_dataset_2018.btc, 'var_95_btc': var_btc,
               'eth': return_dataset_2018.eth, 'var_95_eth': var_eth,
               'xrp': return_dataset_2018.xrp, 'var_95_xrp': var_xrp})
-df_gamma_95.to_excel('results/gamma_95.xlsx', index=False)
+df_garch_95.to_excel('results/garch_95.xlsx', index=False)
