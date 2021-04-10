@@ -19,7 +19,7 @@ df_mc_95 = pd.DataFrame({"Date":[],
 for n_sims in [1000,10000,100000]:
     for i in range (i_2018, T):
         # past 7 days data
-        train_data = return_all[i_2018 - 7:i_2018]
+        train_data = return_all[i - 7:i]
         # mean for respective crypto-currency
         mean_all = np.mean(train_data, axis=0)
         mean_btc = mean_all[0]
