@@ -84,13 +84,13 @@ btc_sigma = run_garch(return_dataset.btc.to_numpy(), "BTC", pVar)
 eth_sigma = run_garch(return_dataset.eth.to_numpy(), "ETH", pVar)
 xrp_sigma = run_garch(return_dataset.xrp.to_numpy(), "XRP", pVar)
 
-var_btc = np.abs(-norm.ppf(0.05)*btc_sigma[363:])
-var_eth = np.abs(-norm.ppf(0.05)*eth_sigma[363:])
-var_xrp = np.abs(-norm.ppf(0.05)*xrp_sigma[363:])
-
+var_btc = np.abs(-norm.ppf(0.05)*btc_sigma[i_2018:])
+var_eth = np.abs(-norm.ppf(0.05)*eth_sigma[i_2018:])
+var_xrp = np.abs(-norm.ppf(0.05)*xrp_sigma[i_2018:])
+date = return_dataset.Date.to_numpy()[i_2018:]
 pVar = 0.05
 
-df_garch_95 = pd.DataFrame({'btc': return_dataset_2018.btc, 'var_95_btc': var_btc,
+df_garch_95 = pd.DataFrame({'Data':date,'btc': return_dataset_2018.btc, 'var_95_btc': var_btc,
               'eth': return_dataset_2018.eth, 'var_95_eth': var_eth,
               'xrp': return_dataset_2018.xrp, 'var_95_xrp': var_xrp})
 df_garch_95.to_excel('results/garch_95.xlsx', index=False)

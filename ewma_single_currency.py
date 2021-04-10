@@ -37,7 +37,8 @@ COV_2018 = np.full([T_2018,3], np.nan)
 pVar = 0.05
 Zscore = norm.ppf(pVar)
 # Get individual EWMA95
-df_ewma_95 = pd.DataFrame({"btc":[],"var_95_btc":[],
+df_ewma_95 = pd.DataFrame({"Date":[],
+                           "btc":[],"var_95_btc":[],
                            "eth":[],"var_95_eth":[],
                            "xrp":[],"var_95_xrp":[]})
 
@@ -49,10 +50,11 @@ for i in range(i_2018,T):
     v_var_95_btc, v_var_95_eth, v_var_95_xrp = - Zscore * np.sqrt(VAR[i,:])
     # corresponding btc eth xrp returns
     returns_btc_eth_xrp = return_dataset.iloc[i,:]
+    date = returns_btc_eth_xrp[0]
     v_return_btc = returns_btc_eth_xrp[1]
     v_return_eth = returns_btc_eth_xrp[2]
     v_return_xrp = returns_btc_eth_xrp[3]
-    update_data = [v_return_btc,v_var_95_btc, v_return_eth,v_var_95_eth, v_return_xrp,v_var_95_xrp]
+    update_data = [date,v_return_btc,v_var_95_btc, v_return_eth,v_var_95_eth, v_return_xrp,v_var_95_xrp]
     df_ewma_95.loc[count] = update_data
     count += 1
 
